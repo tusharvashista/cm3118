@@ -1,0 +1,44 @@
+# =====================================
+# GMAPPING PARAMS
+# =====================================
+# params to modify
+delta: 0.01 # Resolution of the map (in metres per occupancy grid block)
+maxUrange: 8.0 # The maximum usable range of the laser. A beam is cropped to this value.
+linearUpdate: 0.05 # Process a scan each time the robot translates this far
+angularUpdate: 0.05 # Process a scan each time the robot rotates this far
+map_update_interval: 1.0 # How long (in seconds) between updates to the map. Lowering this number updates the occupancy grid more often, at the expense of greater computational load.
+
+############
+
+sigma: 0.05
+kernelSize: 1
+lstep: 0.05
+astep: 0.05
+iterations: 5
+lsigma: 0.075
+ogain: 3.0
+lskip: 0
+minimumScore: 50
+srr: 0.1
+srt: 0.2
+str: 0.1
+stt: 0.2
+temporalUpdate: 0.5
+resampleThreshold: 0.5
+particles: 100
+xmin: -10.0
+ymin: -10.0
+xmax: 10.0
+ymax: 10.0
+llsamplerange: 0.01
+llsamplestep: 0.01
+lasamplerange: 0.005
+lasamplestep: 0.005
+
+# =====================================
+# OCTOMAP PARAMS
+# =====================================
+pointcloud_min_z: 0.1 # Minimum and maximum height of points to consider for insertion in the callback. Any point outside of this intervall will be discarded before running any insertion or ground plane filtering. You can do a rough filtering based on height with this, but if you enable the ground_filter this interval needs to include the ground plane.
+pointcloud_max_z: 1.6
+latch: False # Whether topics are published latched or only once per change. For maximum performance when building a map (with frequent updates), set to false. When set to true, on every map change all topics and visualizations will be created.
+sensor_model/max_range: 8

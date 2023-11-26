@@ -1,0 +1,27 @@
+# Path planning parameters
+world_frame: map
+planner_name: RRTstar # RRT, PRM, RRTstar, PRMstar
+planning_bounds_x: [-8.0, 8.0] # [x_min, x_max]
+planning_bounds_y: [-6.0, 6.0] # [y_min, y_max]
+start_state: [0.0, 0.0, 0.0] # [X, Y, Yaw]
+goal_state: [5.0, -1.0, 0.0] # [X, Y, Yaw]
+timer_period: 1.0 # TIMER PERIOD HAS TO BE HIGHER THAN SOLVING TIME
+solving_time: 0.9
+
+goal_tolerance: 0.1
+visualize_tree: True
+
+# Collision checking
+octomap_service: /octomap_binary
+global_map_topic: /map
+robot_base_height: 0.4
+robot_base_radius: 0.2
+
+odometry_topic: /odom
+query_goal_topic: /ompl_planning_demo/query_goal
+solution_path_topic: /ompl_planning_demo/solution_path
+
+# extra frame option
+main_frame: map
+
+goal_tolerance: 0.1 # error tolerated by the end point of the path to the goal​

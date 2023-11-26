@@ -1,0 +1,6 @@
+resolution: 0.05 # Resolution in meter for the map when starting with an empty map. Otherwise the loaded file's resolution is used.
+pointcloud_min_z: 0.1 # Minimum and maximum height of points to consider for insertion in the callback. Any point outside of this intervall will be discarded before running any insertion or ground plane filtering. You can do a rough filtering based on height with this, but if you enable the ground_filter this interval needs to include the ground plane.
+pointcloud_max_z: 1.6
+latch: False # Whether topics are published latched or only once per change. For maximum performance when building a map (with frequent updates), set to false. When set to true, on every map change all topics and visualizations will be created.
+sensor_model/max_range: 8 # Maximum range in meter for inserting point cloud data when dynamically building a map. Limiting the range to something useful (e.g. 5m) prevents spurious erroneous points far away from the robot.
+filter_ground: True # Whether the ground plane should be detected and ignored from scan data when dynamically building a map, using pcl::SACMODEL_PERPENDICULAR_PLANE. This clears everything up to the ground, but will not insert the ground as obstacle in the map.

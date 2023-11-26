@@ -1,0 +1,15 @@
+<launch>
+
+    <arg name="enable_move" default="true"/>
+
+    <node pkg="path_follower" type="path_follower.py" name="path_follower_node" output="screen" if="$(arg enable_move)">
+        <!-- <param name="linear_velocity" value="0.1"/>
+		<param name="angular_velocity" value="0.6"/> -->
+        <rosparam command="load" file="$(find sampling_planners_demo)/config/ompl_params.yaml" />
+    </node>
+
+    <node name="ompl_planning_demo" pkg="sampling_planners_demo" type="ompl_planning_demo" output="screen">
+        <rosparam command="load" file="$(find sampling_planners_demo)/config/ompl_params.yaml" />
+    </node>
+
+</launch>

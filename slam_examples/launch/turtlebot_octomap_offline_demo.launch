@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Arguments -->
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="open_rviz" default="true"/>
+    <arg name="rviz_ver" default="slam"/>
+    <arg name="world_ver" default=""/>
+    <arg name="octomap_res" default="0.05" />
+
+    <arg name="map_file" default="$(find slam_examples)/maps/mymap.yaml"/>
+
+    <!-- Map server -->
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+
+    <include file="$(find slam_examples)/launch/turtlebot3_house.launch">
+        <arg name="world_ver" default="$(arg world_ver)"/>
+    </include>
+
+    <!-- TurtleBot3 -->
+    <include file="$(find slam_examples)/launch/turtlebot3_remote.launch">
+        <arg name="model" value="$(arg model)" />
+    </include>
+
+    <!-- AMCL -->
+    <include file="$(find slam_examples)/launch/amcl.launch">
+        <arg name="initial_pose_x" default="-3.0"/>
+        <arg name="initial_pose_y" default="1.0"/>
+    </include>
+
+    <!-- OCTOMAP -->
+    <include file="$(find slam_examples)/launch/octomap_offline.launch">
+        <arg name="octomap_res" default="$(arg octomap_res)"/>
+    </include>
+
+    <!-- rviz -->
+    <group if="$(arg open_rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find slam_examples)/rviz/$(arg rviz_ver)_demo.rviz"/>
+    </group>
+
+
+</launch>

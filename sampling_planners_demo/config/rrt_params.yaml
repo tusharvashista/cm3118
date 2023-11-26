@@ -1,0 +1,9 @@
+step_size: 0.05 # distance step to check connection between nodes
+expansion_size: 0.5 # max distance of tree expansion
+bias: 0.5 # bias to expand towards goal
+solve_time: 5 # available time to find solution
+robot_radius: 0.15 # robot’s radius for collision checking with the environment​
+use_path_smoother: False # if it is desired to make the path smooth​
+goal_tolerance: 0.1 # error tolerated by the end point of the path to the goal​
+max_planning_bounds: [20, 20]
+map_topic: /projected_map

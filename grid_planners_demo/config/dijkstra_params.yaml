@@ -1,0 +1,6 @@
+robot_radius: 0.15 # radius considered of the robot to check collisions with environment.
+goal_tolerance: 0.1 # error tolerated by the finish point of the path to the goal
+use_path_smoother: False # if it is desired to make the path smooth
+max_planning_bounds: [20, 20]
+
+map_topic: /projected_map

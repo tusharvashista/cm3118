@@ -1,0 +1,13 @@
+<launch>
+	<arg name="enable_move" default="true"/>
+
+	<node pkg="path_follower" type="path_follower.py" name="path_follower_node" output="screen" if="$(arg enable_move)">
+		<!-- <param name="linear_velocity" value="0.1"/>
+		<param name="angular_velocity" value="0.6"/> -->
+		<rosparam command="load" file="$(find grid_planners_demo)/config/astar_params.yaml" />
+	</node>
+
+	<node pkg="grid_planners_demo" name="navigator_node" type="navigator_astar.py" output="screen">
+		<rosparam command="load" file="$(find grid_planners_demo)/config/astar_params.yaml" />
+	</node>
+</launch>

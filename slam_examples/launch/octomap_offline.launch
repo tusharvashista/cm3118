@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="octomap_res" default="0.05"/>
+
+    <arg name="map_file" default="$(find slam_examples)/maps/map$(arg octomap_res).bt" />
+    <!-- Map server -->
+    <node pkg="octomap_server" name="octomap_server" type="octomap_server_node" args="$(arg map_file)">
+        <param name="frame_id" type="string" value="odom" />
+        <remap from="cloud_in" to="/d435/depth/points" />
+        <rosparam command="load" file="$(find slam_examples)/config/octomap_params.yaml" />
+    </node>
+</launch>
